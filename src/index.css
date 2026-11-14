@@ -1,0 +1,307 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==========================================================================
+   Design System Tokens (CSS Custom Properties)
+   Visual Archetype: Obsidian & Mint Glassmorphism ("DevOS")
+   ========================================================================== */
+
+:root {
+  /* --- 1. Backgrounds & Canvas --- */
+  --bg-canvas: #f2f6f4;
+  --bg-canvas-muted: #edf3ef;
+  --bg-ambient-radial: radial-gradient(circle at 14% 10%, rgba(162, 235, 195, 0.45) 0%, rgba(242, 246, 244, 0) 55%), radial-gradient(circle at 90% 85%, rgba(254, 243, 235, 0.5) 0%, rgba(242, 246, 244, 0) 45%);
+  --bg-surface-glass: rgba(255, 255, 255, 0.72);
+  --bg-surface-glass-hover: rgba(255, 255, 255, 0.88);
+  --bg-surface-glass-active: rgba(255, 255, 255, 0.96);
+  --bg-surface-glass-solid: #ffffff;
+
+  /* --- 2. Dark Anchor Surfaces (Sidebar & Feature Banners) --- */
+  --bg-obsidian-950: #051a14;
+  --bg-obsidian-900: #08221b;
+  --bg-obsidian-850: #0c2b23;
+  --bg-obsidian-800: #0e332a;
+  --bg-obsidian-glass: rgba(5, 26, 20, 0.88);
+
+  /* --- 3. Emerald & Mint Accents --- */
+  --color-mint-50: #f0fdf4;
+  --color-mint-100: #ecfdf5;
+  --color-mint-200: #a7f3d0;
+  --color-mint-300: #6ee7b7;
+  --color-mint-400: #34d399;
+  --color-mint-500: #10b981;
+  --color-mint-600: #059669;
+  --color-mint-glow: rgba(52, 211, 153, 0.35);
+
+  /* --- 4. Typography Colors --- */
+  --text-primary-dark: #09221d;
+  --text-secondary-dark: #4a635d;
+  --text-muted-dark: #789088;
+  --text-primary-light: #f0fdf4;
+  --text-secondary-light: rgba(240, 253, 244, 0.72);
+  --text-muted-light: rgba(240, 253, 244, 0.45);
+
+  /* --- 5. Borders & Specular Highlights --- */
+  --border-glass: rgba(255, 255, 255, 0.85);
+  --border-glass-subtle: rgba(255, 255, 255, 0.45);
+  --border-glass-inner: inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
+  --border-obsidian: rgba(255, 255, 255, 0.08);
+  --border-obsidian-hover: rgba(52, 211, 153, 0.25);
+  --border-mint-subtle: rgba(52, 211, 153, 0.2);
+
+  /* --- 6. Shadows & Elevations --- */
+  --shadow-glass: 0 10px 30px -8px rgba(9, 34, 29, 0.05), 0 4px 12px -2px rgba(9, 34, 29, 0.03);
+  --shadow-glass-hover: 0 20px 40px -12px rgba(9, 34, 29, 0.10), 0 8px 16px -4px rgba(9, 34, 29, 0.04);
+  --shadow-mint-glow: 0 6px 20px -4px rgba(52, 211, 153, 0.40);
+  --shadow-obsidian: 0 24px 48px -12px rgba(5, 26, 20, 0.35);
+  --shadow-pill: 0 2px 8px -1px rgba(9, 34, 29, 0.06);
+
+  /* --- 7. Border Radii --- */
+  --radius-card: 22px;
+  --radius-container: 28px;
+  --radius-inner: 12px;
+  --radius-pill: 9999px;
+
+  /* --- 8. Spacing Scale --- */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+
+  /* --- 9. Typography Fonts & Tracking --- */
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* --- 10. Motion Physics & Timings --- */
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --sidebar-w-collapsed: 76px;
+  --sidebar-w-expanded: 240px;
+}
+
+html.dark {
+  --bg-canvas: #061713;
+  --bg-canvas-muted: #04100d;
+  --bg-ambient-radial: radial-gradient(circle at 14% 10%, rgba(16, 185, 129, 0.22) 0%, rgba(6, 23, 19, 0) 55%), radial-gradient(circle at 90% 85%, rgba(6, 40, 32, 0.45) 0%, rgba(6, 23, 19, 0) 45%);
+  --bg-surface-glass: rgba(8, 31, 26, 0.75);
+  --bg-surface-glass-hover: rgba(12, 44, 37, 0.88);
+  --bg-surface-glass-active: rgba(16, 58, 49, 0.95);
+  --bg-surface-glass-solid: #08221b;
+
+  --color-mint-100: rgba(16, 185, 129, 0.16);
+  --color-mint-200: rgba(16, 185, 129, 0.28);
+  --color-mint-600: #8EE2B2;
+
+  --text-primary-dark: #f0fdf4;
+  --text-secondary-dark: #a3cfc3;
+  --text-muted-dark: #649688;
+
+  --border-glass: rgba(52, 211, 153, 0.16);
+  --border-glass-subtle: rgba(52, 211, 153, 0.08);
+  --border-glass-inner: inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+  --shadow-glass: 0 10px 30px -8px rgba(0, 0, 0, 0.45), 0 4px 12px -2px rgba(0, 0, 0, 0.3);
+  --shadow-glass-hover: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
+}
+
+/* ==========================================================================
+   Tailwind CSS v4 Theme Extension
+   Exposes tokens as utility classes:
+   e.g. bg-canvas, bg-surface-glass, bg-obsidian-950, text-primary-dark,
+        rounded-card, shadow-glass, font-sans, font-mono
+   ========================================================================== */
+
+@theme {
+  --color-canvas: var(--bg-canvas);
+  --color-canvas-muted: var(--bg-canvas-muted);
+  --color-surface-glass: var(--bg-surface-glass);
+  --color-surface-glass-hover: var(--bg-surface-glass-hover);
+  --color-surface-glass-active: var(--bg-surface-glass-active);
+  --color-surface-glass-solid: var(--bg-surface-glass-solid);
+
+  --color-obsidian-950: var(--bg-obsidian-950);
+  --color-obsidian-900: var(--bg-obsidian-900);
+  --color-obsidian-850: var(--bg-obsidian-850);
+  --color-obsidian-800: var(--bg-obsidian-800);
+  --color-obsidian-glass: var(--bg-obsidian-glass);
+
+  --color-mint-50: var(--color-mint-50);
+  --color-mint-100: var(--color-mint-100);
+  --color-mint-200: var(--color-mint-200);
+  --color-mint-300: var(--color-mint-300);
+  --color-mint-400: var(--color-mint-400);
+  --color-mint-500: var(--color-mint-500);
+  --color-mint-600: var(--color-mint-600);
+
+  --color-text-primary-dark: var(--text-primary-dark);
+  --color-text-secondary-dark: var(--text-secondary-dark);
+  --color-text-muted-dark: var(--text-muted-dark);
+  --color-text-primary-light: var(--text-primary-light);
+  --color-text-secondary-light: var(--text-secondary-light);
+  --color-text-muted-light: var(--text-muted-light);
+
+  --radius-card: var(--radius-card);
+  --radius-container: var(--radius-container);
+  --radius-inner: var(--radius-inner);
+  --radius-pill: var(--radius-pill);
+
+  --shadow-glass: var(--shadow-glass);
+  --shadow-glass-hover: var(--shadow-glass-hover);
+  --shadow-mint-glow: var(--shadow-mint-glow);
+  --shadow-obsidian: var(--shadow-obsidian);
+  --shadow-pill: var(--shadow-pill);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+/* ==========================================================================
+   Base Layer & Reset
+   ========================================================================== */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: var(--font-sans);
+  background-color: var(--bg-canvas);
+  color: var(--text-primary-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ==========================================================================
+   Reusable Design System Component Styles
+   ========================================================================== */
+
+/* Ambient Glowing Background Layer */
+.ambient-glow-backdrop {
+  background-color: var(--bg-canvas);
+  background-image: var(--bg-ambient-radial);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Frosted Glassmorphism Card Surface */
+.glass-card {
+  background: var(--bg-surface-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-glass);
+  border-radius: var(--radius-card);
+  transition: all var(--transition-normal);
+}
+
+.glass-card:hover {
+  background: var(--bg-surface-glass-hover);
+  box-shadow: var(--shadow-glass-hover);
+}
+
+/* Specular High-Light Border Inner Rim */
+.specular-border {
+  box-shadow: var(--border-glass-inner);
+}
+
+/* Deep Obsidian Floating Surfaces (Sidebar, Command Palette, Feature Banner) */
+.glass-obsidian {
+  background: var(--bg-obsidian-950);
+  border: 1px solid var(--border-obsidian);
+  box-shadow: var(--shadow-obsidian);
+  border-radius: var(--radius-container);
+}
+
+/* Pill Badges (Category Chips, Filter Buttons) */
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  border: 1px solid var(--border-glass-subtle);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  color: var(--text-secondary-dark);
+}
+
+.pill-badge:hover {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text-primary-dark);
+  border-color: var(--border-glass);
+}
+
+.pill-badge.active {
+  background: var(--bg-obsidian-950);
+  color: var(--text-primary-light);
+  border-color: var(--bg-obsidian-950);
+  box-shadow: var(--shadow-pill);
+}
+
+html.dark .pill-badge {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--text-secondary-dark);
+}
+
+html.dark .pill-badge:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--text-primary-dark);
+}
+
+html.dark .pill-badge.active {
+  background: #8EE2B2;
+  color: #071F19;
+  border-color: #8EE2B2;
+  box-shadow: 0 0 16px rgba(142, 226, 178, 0.35);
+}
+
+/* Illuminated Active Sidebar Pill */
+.active-nav-pill {
+  background-color: var(--color-mint-200);
+  color: var(--bg-obsidian-950);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-mint-glow);
+}
+
+/* Subtle Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(9, 34, 29, 0.12);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(9, 34, 29, 0.22);
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
