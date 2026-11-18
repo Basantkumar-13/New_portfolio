@@ -1,47 +1,20 @@
 import { motion } from 'motion/react';
 import { Package, Code2, Flame, TrendingUp } from 'lucide-react';
+import { homeMetricsData } from '../../data/analytics';
+
+const iconMap = {
+  package: Package,
+  code: Code2,
+  flame: Flame,
+  trending: TrendingUp,
+};
 
 export default function MetricsRow() {
-  const stats = [
-    {
-      id: 'projects',
-      value: '15+',
-      label: 'Projects',
-      icon: Package,
-      iconBg: 'bg-[#EAF6EE]',
-      iconColor: 'text-[#136C49]',
-    },
-    {
-      id: 'problems',
-      value: '1,324+',
-      label: 'Problems Solved',
-      icon: Code2,
-      iconBg: 'bg-[#EDF3EF]',
-      iconColor: 'text-[#2C4A3E]',
-    },
-    {
-      id: 'streak',
-      value: '47',
-      label: 'Day Streak',
-      icon: Flame,
-      iconBg: 'bg-[#FFF3E8]',
-      iconColor: 'text-[#F97316]',
-    },
-    {
-      id: 'learning',
-      value: '2+',
-      label: 'Years Learning',
-      icon: TrendingUp,
-      iconBg: 'bg-[#EBF3FE]',
-      iconColor: 'text-[#2563EB]',
-    },
-  ];
-
   return (
     <section className="mb-8">
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
-        {stats.map((item, index) => {
-          const Icon = item.icon;
+        {homeMetricsData.map((item) => {
+          const Icon = iconMap[item.icon] || Code2;
           return (
             <motion.div
               key={item.id}

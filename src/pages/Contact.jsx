@@ -2,10 +2,11 @@ import SectionHeader from '../components/common/SectionHeader';
 import Button from '../components/common/Button';
 import SocialLinks from '../components/common/SocialLinks';
 import { Mail, Send, MapPin, Clock } from 'lucide-react';
+import { profileData } from '../data/profile';
 
 export default function Contact() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 pb-8">
       <SectionHeader
         badge="GET IN TOUCH"
         title="Contact &amp; Collaboration"
@@ -26,8 +27,8 @@ export default function Contact() {
               </div>
               <div>
                 <p className="text-xs text-text-muted-dark">Email Address</p>
-                <a href="mailto:developer@example.com" className="font-semibold text-text-primary-dark hover:text-mint-600 dark:hover:text-mint-400">
-                  developer@example.com
+                <a href={`mailto:${profileData.email}`} className="font-semibold text-text-primary-dark hover:text-mint-600 dark:hover:text-mint-400">
+                  {profileData.email}
                 </a>
               </div>
             </div>
@@ -38,7 +39,7 @@ export default function Contact() {
               </div>
               <div>
                 <p className="text-xs text-text-muted-dark">Current Base</p>
-                <p className="font-semibold text-text-primary-dark">PSIT Kanpur, India</p>
+                <p className="font-semibold text-text-primary-dark">{profileData.location}</p>
               </div>
             </div>
 
@@ -48,7 +49,7 @@ export default function Contact() {
               </div>
               <div>
                 <p className="text-xs text-text-muted-dark">Average Response Time</p>
-                <p className="font-semibold text-text-primary-dark">&lt; 24 Hours</p>
+                <p className="font-semibold text-text-primary-dark">{profileData.responseCadence}</p>
               </div>
             </div>
           </div>

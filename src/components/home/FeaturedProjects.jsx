@@ -31,7 +31,7 @@ export default function FeaturedProjects() {
         </Link>
       </div>
 
-      {/* 4 Cards Grid */}
+      {/* 3 Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {projectsData.map((project) => {
           const Icon = iconMap[project.theme?.type] || Brain;

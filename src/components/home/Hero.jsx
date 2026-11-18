@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowRight, Mail } from 'lucide-react';
+import { profileData } from '../../data/profile';
 
 export default function Hero() {
   return (
@@ -11,20 +12,20 @@ export default function Hero() {
           {/* Status Pill Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EBF4EF] dark:bg-[#0E2F26] text-[#174A39] dark:text-[#8EE2B2] text-xs font-semibold border border-[#DDECE3] dark:border-white/10">
             <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
-            <span>AI/ML Engineer</span>
+            <span>{profileData.badge}</span>
           </div>
 
           {/* Heading */}
           <div className="space-y-0.5">
             <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-[#0F261E] dark:text-white leading-[1.12]">
-              Hi, I'm <br />
-              <span className="text-[#136C49] dark:text-[#5EEAD4]">Basant Yadav</span>
+              {profileData.headline} <br />
+              <span className="text-[#136C49] dark:text-[#5EEAD4]">{profileData.name}</span>
             </h1>
           </div>
 
           {/* Description */}
           <p className="text-sm sm:text-base text-[#4D675D] dark:text-[#9FBDB1] leading-relaxed max-w-lg font-normal pt-1">
-            I build intelligent and scalable web applications and AI solutions that solve real-world problems.
+            {profileData.tagline}
           </p>
 
           {/* Action Buttons */}
@@ -56,7 +57,7 @@ export default function Hero() {
             className="relative"
           >
             <img
-              src="/assets/workspace-3d.png"
+              src="D:\projecto\new_portfolio\public\assets\workspace-3d.png"
               alt="My Workspace 3D Visual"
               className="w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[440px] h-auto object-contain drop-shadow-[0_20px_35px_rgba(20,50,40,0.1)] select-none pointer-events-none"
             />

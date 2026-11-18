@@ -1,30 +1,7 @@
 import SectionHeader from '../components/common/SectionHeader';
+import { experiencesData } from '../data/experience';
 
 export default function Experience() {
-  const experiences = [
-    {
-      role: 'Staff Systems Engineer',
-      company: 'Distributed Edge Labs',
-      period: '2023 - Present',
-      description: 'Leading architecture of multi-region microservices handling 40k+ rps. Driving 35% latency reduction via Go runtime profiling and distributed tracing.',
-      technologies: ['Go', 'Kubernetes', 'gRPC', 'AWS', 'Redis']
-    },
-    {
-      role: 'Senior Full Stack Engineer',
-      company: 'HyperScale Dynamics',
-      period: '2021 - 2023',
-      description: 'Engineered web applications and internal observability tooling using React, TypeScript, and Node.js. Built real-time canvas visualization interfaces.',
-      technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Docker']
-    },
-    {
-      role: 'Software Engineer',
-      company: 'Nexus Software Studio',
-      period: '2019 - 2021',
-      description: 'Collaborated on client-facing design systems and automated CI/CD pipelines. Maintained 99.9% uptime across production clusters.',
-      technologies: ['React', 'Tailwind CSS', 'Python', 'FastAPI', 'GraphQL']
-    }
-  ];
-
   return (
     <div className="space-y-8">
       <SectionHeader
@@ -34,7 +11,7 @@ export default function Experience() {
       />
 
       <div className="relative pl-6 border-l-2 border-mint-200/60 dark:border-mint-500/30 space-y-8">
-        {experiences.map((exp, index) => (
+        {experiencesData.map((exp, index) => (
           <div key={index} className="relative group">
             {/* Timeline bullet */}
             <span className="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-mint-400 border-4 border-canvas shadow-sm" />

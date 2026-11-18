@@ -1,18 +1,19 @@
 import { Mail } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, TwitterIcon } from './Icons';
+import { profileData } from '../../data/profile';
+
+const iconMap = {
+  GitHub: GithubIcon,
+  LinkedIn: LinkedinIcon,
+  Twitter: TwitterIcon,
+  Email: Mail,
+};
 
 export default function SocialLinks({ className = '', iconSize = 18 }) {
-  const socials = [
-    { name: 'GitHub', icon: GithubIcon, href: 'https://github.com' },
-    { name: 'LinkedIn', icon: LinkedinIcon, href: 'https://linkedin.com' },
-    { name: 'Twitter', icon: TwitterIcon, href: 'https://twitter.com' },
-    { name: 'Email', icon: Mail, href: 'mailto:developer@example.com' },
-  ];
-
   return (
     <div className={`flex items-center gap-2 ${className}`}>
-      {socials.map((item) => {
-        const Icon = item.icon;
+      {profileData.socials.map((item) => {
+        const Icon = iconMap[item.name] || Mail;
         return (
           <a
             key={item.name}
